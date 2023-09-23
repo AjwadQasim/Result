@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+<div>
+<div id="details">   
+    <label id="RollNo">Roll No:</label>
+    <input type="number"  id="RollNo">
+    <br> <br>
+    <label>Name:</label>
+    <input type="text"  id="Name">
+    <br> <br>
+    <label>FatherName:</label>
+    <input type="text"  id="F_Name">
+    <br> <br>
+    <label id="label">Age:</label>
+    <input type="number"  id="Age">
+    <button onclick="infromation()" id="detailbtn">NEXT</button>
+    </div>
+    <br>
+<div id="numbersdiv">    
+    <h3 id="english">English Marks:</h3>
+    <h3>Urdu Marks:</h3>
+    <h3>Math Marks:</h3>
+    <h3 id="Islamiat">Islamiat Marks:</h3>
+    <h3 id="Computer">Computer Marks:</h3>
+    <br>
+    <label id="total">Total Marks:</label>
+    <input type="number" class="Input" id="EnglishT">
+    <input type="number" class="Input" id="UrduT">
+    <input type="number" class="Input" id="MathT">
+    <input type="number" class="Input" id="PhysicsT">
+    <input type="number" class="Input" id="BiologyT">
+    <br>
+    <label>Obtained Marks:</label>
+    <input type="number" class="Input" id="EnglishO">
+    <input type="number" class="Input" id="UrduO">
+    <input type="number" class="Input" id="MathO">
+    <input type="number" class="Input" id="PhysicsO">
+    <input type="number" class="Input" id="BiologyO">
+    <br>
+    <button onclick="result()" id="submitbtn">SUBMIT</button>
+</div>
+<div id="resultdiv">
+        <label id="marklabl">Total Marks:</label>
+        <input class="Input" id="Tm">
+        <br> <br>
+        <label>Obtained Marks:</label>
+        <input class="Input" id="om">
+        <br> <br>
+        <label>Percentage:</label>
+        <input class="Input" id="per">
+        <br> <br>
+        <label>Grade:</label>
+        <input class="Input" id="grade">
+</div>
+</div>
+<style>
+ .Input{
+    margin-top: 0.3rem;
+ }   
+#details{
+    border: 3px solid black;
+    width: 20rem;
+    border-radius: 1rem;
+    background-color: burlywood;
+    height: 11rem;
+    margin-left: 30rem;
+    margin-left: 28rem;
+    box-shadow: 2px 2px black;
+}
+#detailbtn{
+    background-color: burlywood;
+    margin-top: 0.3rem;
+    margin-left: 16rem;
+}
+#RollNo{
+   margin-left: 1.2rem;
+   margin-top: 0.5rem;
+}
+#Name{
+    margin-left: 2.2rem;
+}
+#Age{
+    margin-left: 3rem;
+}
+#Tm,#per{
+    margin-left: 2rem;
+}
+#grade{
+    margin-left: 3.6rem;
+}
+#numbersdiv
+{
+    border: 2px solid black;
+    width: 71rem;
+    border-radius: 2rem;
+    background-color: burlywood;
+    box-shadow: 2px 2px black;
+    margin-left: 8rem;
+    height: 10rem;
+}
+#submitbtn{
+    margin-bottom: 0.5rem;
+    background-color: burlywood;
+    margin-left: 66rem;
+    border-radius: 5px;
+}
+#resultdiv{
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    background-color: burlywood;
+    width: 20rem;
+    height: 10rem;
+    border-radius: 1rem;
+    margin-left: 30rem;
+    margin-top: 2rem;
+}
+h3{
+display: inline-block;
+margin-left: 5.8rem;
+}
+#english{
+    margin-left: 7rem;
+}
+#EnglishT,#UrduT,#MathT,#PhysicsT,#BiologyT{
+    margin-left: 0.5rem;
+}
+#UrduO,#MathO{
+    margin-left: 0.5rem;
+}
+#Computer,#Islamiat{
+    margin-left: 3.5rem;
+}
+label{
+    margin-left: 1rem;
+}
+#total{
+    margin-left: 1.5    rem;
+}
+</style>
+
+<script>
+var numberdiv=document.getElementById('numbersdiv')
+numberdiv.style.visibility='hidden'
+var resultdiv=document.getElementById("resultdiv")
+resultdiv.style.visibility='hidden'
+function  infromation()
+{
+    var detaildiv=document.getElementById("details")
+    var numberdiv=document.getElementById('numbersdiv')
+    numberdiv.style.visibility='visible'
+}  
+function result()
+{
+    var resultdiv=document.getElementById("resultdiv")
+    resultdiv.style.visibility='visible'
+    var numberdiv=document.getElementById('numbersdiv')
+    let RollNo=document.getElementById("RollNo").value
+    let Name=document.getElementById("Name").value
+    let F_Name=document.getElementById("F_Name").value
+    let Age=document.getElementById("Age").value
+    let EnglishT=+document.getElementById("EnglishT").value
+    let EnglishO=+document.getElementById("EnglishO").value
+    let UrduT=+document.getElementById("UrduT").value
+    let UrduO=+document.getElementById("UrduO").value
+    let MathT=+document.getElementById("MathT").value
+    let MathO=+document.getElementById("MathO").value
+    let PhysicsT=+document.getElementById("PhysicsT").value
+    let PhysicsO=+document.getElementById("PhysicsO").value
+    let BiologyT=+document.getElementById("BiologyT").value
+    let BiologyO=+document.getElementById("BiologyO").value
+    let TM=EnglishT+UrduT+MathT+PhysicsT+BiologyT;
+    let Ob=EnglishO+UrduO+MathO+PhysicsO+BiologyO;
+    let per=Ob/TM*100
+    let grade="";
+if(per>=80 && per<=100) 
+{
+    grade="A+"
+}
+else if(per>=70)
+{
+    grade="A"
+}
+else if(per>=60)
+{
+    grade="B"
+}
+else if(per>=50)
+{
+    grade="C"
+}
+else if(per>=40)
+{
+    grade="D"
+}
+else if(per<40)
+{
+    grade="Fail"
+}
+document.getElementById("Tm").value=TM;
+document.getElementById("om").value=Ob;
+document.getElementById("per").value=per.toFixed(2);
+document.getElementById("grade").value=grade;
+}
+</script>
+
+</body>
+</html>
